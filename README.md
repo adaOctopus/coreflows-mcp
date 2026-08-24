@@ -194,9 +194,34 @@ Rules:
 - Commit messages follow: feat(TICKET-KEY): description
 ```
 
+### Schedule it (runs even when your laptop is closed)
+
+Paste this into Claude Code to set up a daily schedule that runs your tickets automatically:
+
+```
+Set up a scheduled task using /schedule that runs every weekday:
+
+- 6:00 AM: Morning run — call get_dashboard, then start_task on every QUEUED ticket. Follow the loop metadata for each: code → push_branch → verify_and_submit. If CI fails, fix and retry up to 3 times. Move to the next ticket when done or blocked.
+
+- 12:00 PM: Midday check — call get_dashboard. For any task stuck in EXECUTING or CI_FAILED, retry it. For tasks with review comments, call check_comments, address them, push again.
+
+- 5:00 PM: End of day — call get_dashboard. Draft a Slack standup summary:
+  ✅ Done: completed tickets with PR links
+  🔄 In progress: still running
+  🚫 Blocked: failed with reason
+
+Rules for all runs:
+- Use the coolplugz MCP tools (get_dashboard, start_task, push_branch, verify_and_submit, check_comments)
+- Never ask for confirmation — just do it
+- Never push to main — always feature branches
+- Never commit secrets or .env files
+- If stuck after 3 retries, mark blocked and move on
+- Commit messages: feat(TICKET-KEY): description
+```
+
 ### Slack standup updates
 
-If you want Claude Code to also post a standup update to Slack after completing tasks, add this to the prompt above:
+If you just want the standup without full scheduling, add this to the autopilot prompt above:
 
 ```
 After finishing all tasks, draft a Slack standup message with:
