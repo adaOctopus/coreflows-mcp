@@ -168,6 +168,93 @@ IDLE → start_task → EXECUTING → push_branch → PUSHED → verify_and_subm
   → Review comments → fix → push_branch → verify_and_submit (loop)
 ```
 
+## Autopilot Prompt
+
+Once everything is connected, paste this prompt into Claude Code to have it run your tickets on autopilot — looping through Jira, writing code, pushing PRs, and posting Slack updates:
+
+```
+You are my autonomous dev agent. Use the coolplugz MCP tools to work through my Jira tickets without asking me anything.
+
+Your loop:
+1. Call get_dashboard to see all tasks and their status
+2. For any task in QUEUED or EXECUTING state, call start_task with its Jira key
+3. Follow the loop metadata exactly — the _meta.loop in each response tells you the next tool to call
+4. After writing code and running tests, call push_branch to push
+5. Call verify_and_submit — it opens the PR, polls CI, and tells you what to do next
+6. If CI fails, read the failure logs, fix the code, and push again
+7. If there are review comments, call check_comments, address them, push again
+8. When done with a task, move to the next one from the dashboard
+9. After completing all tasks, post a summary of what you did
+
+Rules:
+- Never ask me for confirmation — just do it
+- Never push to main — always use feature branches
+- Never commit secrets or .env files
+- If you get stuck after 3 retries, mark it blocked and move on
+- Commit messages follow: feat(TICKET-KEY): description
+```
+
+### Slack standup updates
+
+If you want Claude Code to also post a standup update to Slack after completing tasks, add this to the prompt above:
+
+```
+After finishing all tasks, draft a Slack standup message with:
+- ✅ Done: list completed tickets with PR links
+- 🔄 In progress: list any still running
+- 🚫 Blocked: list any that failed with the reason
+Format it for #standup channel. Keep it under 5 lines.
+```
+
+## Environment Variables Reference
+
+### Required
+
+| Variable | What it does | How to get it |
+|----------|-------------|---------------|
+| `GITHUB_TOKEN` | Pushes branches, opens PRs, reads repo state, polls CI | [github.com/settings/tokens](https://github.com/settings/tokens) → Generate classic token → check **`repo`** + **`workflow`** scopes |
+| `SHELL_ENV` | Tells CoolPlugz how to run shell commands in your environment | One of: `wsl2`, `macos`, `linux`, `git-bash`, `powershell` |
+| `REPOS_ROOT` | Where your repos are cloned locally | Absolute path, e.g. `/home/you/projects` or `C:\Users\you\repos` |
+
+### Jira (enables ticket context)
+
+| Variable | What it does | How to get it |
+|----------|-------------|---------------|
+| `JIRA_API_TOKEN` | Fetches ticket description, acceptance criteria, comments | [id.atlassian.com/manage-profile/security/api-tokens](https://id.atlassian.com/manage-profile/security/api-tokens) → Create API token |
+| `JIRA_EMAIL` | Authenticates with Jira (Basic auth = email:token) | Your Atlassian account email |
+| `JIRA_BASE_URL` | Your Jira instance URL | e.g. `https://yourteam.atlassian.net` |
+
+### GitHub (already covered by GITHUB_TOKEN above)
+
+The `GITHUB_TOKEN` handles everything: reading repos, pushing branches, opening PRs, polling CI status, fetching review comments, detecting forks.
+
+**Scopes needed:** `repo` (full repo access) + `workflow` (trigger/read CI)
+
+### Notion (enables spec fetching)
+
+| Variable | What it does | How to get it |
+|----------|-------------|---------------|
+| `NOTION_TOKEN` | Pulls linked Notion docs into the CRISPE prompt as reference context | [notion.so/my-integrations](https://www.notion.so/my-integrations) → Create integration → Copy "Internal Integration Secret" → Share target pages with the integration |
+
+### Slack (enables mention tracking + draft replies)
+
+| Variable | What it does | How to get it |
+|----------|-------------|---------------|
+| `SLACK_TOKEN` | Tracks mentions of your tickets in Slack, drafts AI replies | [api.slack.com/apps](https://api.slack.com/apps) → Create New App → OAuth & Permissions → Add scopes: **`channels:history`**, **`search:read`** → Install to workspace → Copy **Bot User OAuth Token** (`xoxb-...`) |
+
+### AI features (optional)
+
+| Variable | What it does | How to get it |
+|----------|-------------|---------------|
+| `ANTHROPIC_API_KEY` | Powers smart repo detection from ticket text + AI-drafted Slack replies | [console.anthropic.com](https://console.anthropic.com) → API Keys → Create Key |
+
+### Workspace (optional)
+
+| Variable | What it does | When needed |
+|----------|-------------|-------------|
+| `WSL_DISTRO` | Your WSL2 distro name for path translation | Only if `SHELL_ENV=wsl2` (e.g. `Ubuntu`) |
+| `PORT` | MCP server port | Default: `3100` — change if port is taken |
+
 ## Data Storage
 
 All data lives in `~/.coolplugz/data.json` — tasks, context snapshots, repo mappings, insights, prompt history. No database required. Delete the file to start fresh.
