@@ -1,4 +1,4 @@
-# CoolPlugz Core
+# Core MCP
 
 MCP tools that turn Jira tickets into PRs through Claude Code. Fetches context from Jira, GitHub, Notion, and Slack, builds structured prompts, handles git push/PR/CI — all autonomously.
 
