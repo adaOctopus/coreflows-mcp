@@ -1,5 +1,9 @@
 # Core MCP
 
+<p align="center">
+  <img src="assets/banner.svg" alt="Core MCP" width="680"/>
+</p>
+
 MCP tools that turn Jira tickets into PRs through Claude Code. Fetches context from Jira, GitHub, Notion, and Slack, builds structured prompts, handles git push/PR/CI — all autonomously.
 
 ## Setup (5 minutes)

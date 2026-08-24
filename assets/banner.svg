@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 520" width="680" height="520">
+  <rect width="680" height="520" fill="#0d0d0d" rx="12"/>
+
+  <!-- Scanline overlay -->
+  <defs>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="transparent"/>
+      <rect y="2" width="4" height="2" fill="rgba(255,255,255,0.015)"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="520" fill="url(#scanlines)"/>
+
+  <!-- CORE MCP pixel art -->
+  <g transform="translate(68, 28)" fill="#E8734A">
+    <!-- C -->
+    <rect x="12" y="0" width="10" height="10" rx="1"/><rect x="22" y="0" width="10" height="10" rx="1"/><rect x="32" y="0" width="10" height="10" rx="1"/><rect x="42" y="0" width="10" height="10" rx="1"/>
+    <rect x="0" y="13" width="10" height="10" rx="1"/><rect x="12" y="13" width="10" height="10" rx="1"/>
+    <rect x="0" y="26" width="10" height="10" rx="1"/><rect x="12" y="26" width="10" height="10" rx="1"/>
+    <rect x="0" y="39" width="10" height="10" rx="1"/><rect x="12" y="39" width="10" height="10" rx="1"/>
+    <rect x="0" y="52" width="10" height="10" rx="1"/><rect x="12" y="52" width="10" height="10" rx="1"/>
+    <rect x="0" y="65" width="10" height="10" rx="1"/><rect x="12" y="65" width="10" height="10" rx="1"/>
+    <rect x="12" y="78" width="10" height="10" rx="1"/><rect x="22" y="78" width="10" height="10" rx="1"/><rect x="32" y="78" width="10" height="10" rx="1"/><rect x="42" y="78" width="10" height="10" rx="1"/>
+
+    <!-- O -->
+    <rect x="72" y="0" width="10" height="10" rx="1"/><rect x="82" y="0" width="10" height="10" rx="1"/><rect x="92" y="0" width="10" height="10" rx="1"/>
+    <rect x="60" y="13" width="10" height="10" rx="1"/><rect x="72" y="13" width="10" height="10" rx="1"/><rect x="102" y="13" width="10" height="10" rx="1"/><rect x="112" y="13" width="10" height="10" rx="1"/>
+    <rect x="60" y="26" width="10" height="10" rx="1"/><rect x="72" y="26" width="10" height="10" rx="1"/><rect x="102" y="26" width="10" height="10" rx="1"/><rect x="112" y="26" width="10" height="10" rx="1"/>
+    <rect x="60" y="39" width="10" height="10" rx="1"/><rect x="72" y="39" width="10" height="10" rx="1"/><rect x="102" y="39" width="10" height="10" rx="1"/><rect x="112" y="39" width="10" height="10" rx="1"/>
+    <rect x="60" y="52" width="10" height="10" rx="1"/><rect x="72" y="52" width="10" height="10" rx="1"/><rect x="102" y="52" width="10" height="10" rx="1"/><rect x="112" y="52" width="10" height="10" rx="1"/>
+    <rect x="60" y="65" width="10" height="10" rx="1"/><rect x="72" y="65" width="10" height="10" rx="1"/><rect x="102" y="65" width="10" height="10" rx="1"/><rect x="112" y="65" width="10" height="10" rx="1"/>
+    <rect x="72" y="78" width="10" height="10" rx="1"/><rect x="82" y="78" width="10" height="10" rx="1"/><rect x="92" y="78" width="10" height="10" rx="1"/>
+
+    <!-- R -->
+    <rect x="130" y="0" width="10" height="10" rx="1"/><rect x="140" y="0" width="10" height="10" rx="1"/><rect x="150" y="0" width="10" height="10" rx="1"/><rect x="160" y="0" width="10" height="10" rx="1"/>
+    <rect x="130" y="13" width="10" height="10" rx="1"/><rect x="140" y="13" width="10" height="10" rx="1"/><rect x="170" y="13" width="10" height="10" rx="1"/><rect x="180" y="13" width="10" height="10" rx="1"/>
+    <rect x="130" y="26" width="10" height="10" rx="1"/><rect x="140" y="26" width="10" height="10" rx="1"/><rect x="170" y="26" width="10" height="10" rx="1"/><rect x="180" y="26" width="10" height="10" rx="1"/>
+    <rect x="130" y="39" width="10" height="10" rx="1"/><rect x="140" y="39" width="10" height="10" rx="1"/><rect x="150" y="39" width="10" height="10" rx="1"/><rect x="160" y="39" width="10" height="10" rx="1"/>
+    <rect x="130" y="52" width="10" height="10" rx="1"/><rect x="140" y="52" width="10" height="10" rx="1"/><rect x="150" y="52" width="10" height="10" rx="1"/>
+    <rect x="130" y="65" width="10" height="10" rx="1"/><rect x="140" y="65" width="10" height="10" rx="1"/><rect x="160" y="65" width="10" height="10" rx="1"/><rect x="170" y="65" width="10" height="10" rx="1"/>
+    <rect x="130" y="78" width="10" height="10" rx="1"/><rect x="140" y="78" width="10" height="10" rx="1"/><rect x="170" y="78" width="10" height="10" rx="1"/><rect x="180" y="78" width="10" height="10" rx="1"/>
+
+    <!-- E -->
+    <rect x="198" y="0" width="10" height="10" rx="1"/><rect x="208" y="0" width="10" height="10" rx="1"/><rect x="218" y="0" width="10" height="10" rx="1"/><rect x="228" y="0" width="10" height="10" rx="1"/><rect x="238" y="0" width="10" height="10" rx="1"/>
+    <rect x="198" y="13" width="10" height="10" rx="1"/><rect x="208" y="13" width="10" height="10" rx="1"/>
+    <rect x="198" y="26" width="10" height="10" rx="1"/><rect x="208" y="26" width="10" height="10" rx="1"/>
+    <rect x="198" y="39" width="10" height="10" rx="1"/><rect x="208" y="39" width="10" height="10" rx="1"/><rect x="218" y="39" width="10" height="10" rx="1"/><rect x="228" y="39" width="10" height="10" rx="1"/>
+    <rect x="198" y="52" width="10" height="10" rx="1"/><rect x="208" y="52" width="10" height="10" rx="1"/>
+    <rect x="198" y="65" width="10" height="10" rx="1"/><rect x="208" y="65" width="10" height="10" rx="1"/>
+    <rect x="198" y="78" width="10" height="10" rx="1"/><rect x="208" y="78" width="10" height="10" rx="1"/><rect x="218" y="78" width="10" height="10" rx="1"/><rect x="228" y="78" width="10" height="10" rx="1"/><rect x="238" y="78" width="10" height="10" rx="1"/>
+
+    <!-- space -->
+
+    <!-- M -->
+    <rect x="280" y="0" width="10" height="10" rx="1"/><rect x="332" y="0" width="10" height="10" rx="1"/>
+    <rect x="280" y="13" width="10" height="10" rx="1"/><rect x="292" y="13" width="10" height="10" rx="1"/><rect x="320" y="13" width="10" height="10" rx="1"/><rect x="332" y="13" width="10" height="10" rx="1"/>
+    <rect x="280" y="26" width="10" height="10" rx="1"/><rect x="292" y="26" width="10" height="10" rx="1"/><rect x="304" y="26" width="10" height="10" rx="1"/><rect x="320" y="26" width="10" height="10" rx="1"/><rect x="332" y="26" width="10" height="10" rx="1"/>
+    <rect x="280" y="39" width="10" height="10" rx="1"/><rect x="306" y="39" width="10" height="10" rx="1"/><rect x="332" y="39" width="10" height="10" rx="1"/>
+    <rect x="280" y="52" width="10" height="10" rx="1"/><rect x="332" y="52" width="10" height="10" rx="1"/>
+    <rect x="280" y="65" width="10" height="10" rx="1"/><rect x="332" y="65" width="10" height="10" rx="1"/>
+    <rect x="280" y="78" width="10" height="10" rx="1"/><rect x="332" y="78" width="10" height="10" rx="1"/>
+
+    <!-- C -->
+    <rect x="362" y="0" width="10" height="10" rx="1"/><rect x="372" y="0" width="10" height="10" rx="1"/><rect x="382" y="0" width="10" height="10" rx="1"/><rect x="392" y="0" width="10" height="10" rx="1"/>
+    <rect x="350" y="13" width="10" height="10" rx="1"/><rect x="362" y="13" width="10" height="10" rx="1"/>
+    <rect x="350" y="26" width="10" height="10" rx="1"/><rect x="362" y="26" width="10" height="10" rx="1"/>
+    <rect x="350" y="39" width="10" height="10" rx="1"/><rect x="362" y="39" width="10" height="10" rx="1"/>
+    <rect x="350" y="52" width="10" height="10" rx="1"/><rect x="362" y="52" width="10" height="10" rx="1"/>
+    <rect x="350" y="65" width="10" height="10" rx="1"/><rect x="362" y="65" width="10" height="10" rx="1"/>
+    <rect x="362" y="78" width="10" height="10" rx="1"/><rect x="372" y="78" width="10" height="10" rx="1"/><rect x="382" y="78" width="10" height="10" rx="1"/><rect x="392" y="78" width="10" height="10" rx="1"/>
+
+    <!-- P -->
+    <rect x="410" y="0" width="10" height="10" rx="1"/><rect x="420" y="0" width="10" height="10" rx="1"/><rect x="430" y="0" width="10" height="10" rx="1"/><rect x="440" y="0" width="10" height="10" rx="1"/>
+    <rect x="410" y="13" width="10" height="10" rx="1"/><rect x="420" y="13" width="10" height="10" rx="1"/><rect x="450" y="13" width="10" height="10" rx="1"/><rect x="460" y="13" width="10" height="10" rx="1"/>
+    <rect x="410" y="26" width="10" height="10" rx="1"/><rect x="420" y="26" width="10" height="10" rx="1"/><rect x="450" y="26" width="10" height="10" rx="1"/><rect x="460" y="26" width="10" height="10" rx="1"/>
+    <rect x="410" y="39" width="10" height="10" rx="1"/><rect x="420" y="39" width="10" height="10" rx="1"/><rect x="430" y="39" width="10" height="10" rx="1"/><rect x="440" y="39" width="10" height="10" rx="1"/>
+    <rect x="410" y="52" width="10" height="10" rx="1"/><rect x="420" y="52" width="10" height="10" rx="1"/>
+    <rect x="410" y="65" width="10" height="10" rx="1"/><rect x="420" y="65" width="10" height="10" rx="1"/>
+    <rect x="410" y="78" width="10" height="10" rx="1"/><rect x="420" y="78" width="10" height="10" rx="1"/>
+  </g>
+
+  <!-- Subtitle -->
+  <text x="340" y="140" text-anchor="middle" fill="#8A8680" font-family="monospace" font-size="11" letter-spacing="6">OPEN-SOURCE MCP SERVER</text>
+
+  <!-- Flow diagram -->
+  <!-- Step 1 -->
+  <rect x="130" y="170" width="36" height="36" rx="6" fill="#E8734A"/>
+  <text x="148" y="194" text-anchor="middle" fill="#0d0d0d" font-family="monospace" font-size="13" font-weight="bold">1</text>
+  <text x="182" y="183" fill="#E8E4DD" font-family="monospace" font-size="13" font-weight="bold">Jira ticket assigned</text>
+  <text x="182" y="200" fill="#8A8680" font-family="monospace" font-size="11">You say "Start PROJ-142" in Claude Code</text>
+
+  <!-- Connector 1-2 -->
+  <line x1="148" y1="206" x2="148" y2="228" stroke="#2A2A2A" stroke-width="2"/>
+  <text x="144" y="226" fill="#8A8680" font-family="monospace" font-size="8">▼</text>
+
+  <!-- Step 2 -->
+  <rect x="130" y="232" width="36" height="36" rx="6" fill="#4AE8E8"/>
+  <text x="148" y="256" text-anchor="middle" fill="#0d0d0d" font-family="monospace" font-size="13" font-weight="bold">2</text>
+  <text x="182" y="245" fill="#E8E4DD" font-family="monospace" font-size="13" font-weight="bold">Context assembled</text>
+  <text x="182" y="262" fill="#8A8680" font-family="monospace" font-size="11">Jira + GitHub + Notion + Slack → CRISPE prompt</text>
+
+  <!-- Connector 2-3 -->
+  <line x1="148" y1="268" x2="148" y2="290" stroke="#2A2A2A" stroke-width="2"/>
+  <text x="144" y="288" fill="#8A8680" font-family="monospace" font-size="8">▼</text>
+
+  <!-- Step 3 -->
+  <rect x="130" y="294" width="36" height="36" rx="6" fill="#4AE88E"/>
+  <text x="148" y="318" text-anchor="middle" fill="#0d0d0d" font-family="monospace" font-size="13" font-weight="bold">3</text>
+  <text x="182" y="307" fill="#E8E4DD" font-family="monospace" font-size="13" font-weight="bold">Claude Code writes the code</text>
+  <text x="182" y="324" fill="#8A8680" font-family="monospace" font-size="11">Implementation, tests, commits — autonomously</text>
+
+  <!-- Connector 3-4 -->
+  <line x1="148" y1="330" x2="148" y2="352" stroke="#2A2A2A" stroke-width="2"/>
+  <text x="144" y="350" fill="#8A8680" font-family="monospace" font-size="8">▼</text>
+
+  <!-- Step 4 -->
+  <rect x="130" y="356" width="36" height="36" rx="6" fill="#E8C44A"/>
+  <text x="148" y="380" text-anchor="middle" fill="#0d0d0d" font-family="monospace" font-size="13" font-weight="bold">4</text>
+  <text x="182" y="369" fill="#E8E4DD" font-family="monospace" font-size="13" font-weight="bold">Push → PR → CI → done</text>
+  <text x="182" y="386" fill="#8A8680" font-family="monospace" font-size="11">Auto-push, open PR, poll CI, fix if red, mark done ✅</text>
+
+  <!-- Tags -->
+  <g transform="translate(130, 420)">
+    <rect x="0" y="0" width="60" height="26" rx="4" fill="none" stroke="#2A2A2A" stroke-width="1"/>
+    <text x="30" y="17" text-anchor="middle" fill="#8A8680" font-family="monospace" font-size="10" letter-spacing="1">JIRA</text>
+
+    <rect x="72" y="0" width="80" height="26" rx="4" fill="none" stroke="#2A2A2A" stroke-width="1"/>
+    <text x="112" y="17" text-anchor="middle" fill="#8A8680" font-family="monospace" font-size="10" letter-spacing="1">GITHUB</text>
+
+    <rect x="164" y="0" width="76" height="26" rx="4" fill="none" stroke="#2A2A2A" stroke-width="1"/>
+    <text x="202" y="17" text-anchor="middle" fill="#8A8680" font-family="monospace" font-size="10" letter-spacing="1">NOTION</text>
+
+    <rect x="252" y="0" width="66" height="26" rx="4" fill="none" stroke="#2A2A2A" stroke-width="1"/>
+    <text x="285" y="17" text-anchor="middle" fill="#8A8680" font-family="monospace" font-size="10" letter-spacing="1">SLACK</text>
+
+    <rect x="330" y="0" width="110" height="26" rx="4" fill="none" stroke="#2A2A2A" stroke-width="1"/>
+    <text x="385" y="17" text-anchor="middle" fill="#8A8680" font-family="monospace" font-size="10" letter-spacing="1">CLAUDE CODE</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="340" y="490" text-anchor="middle" fill="#8A8680" font-family="monospace" font-size="11" letter-spacing="2">github.com/adaOctopus/coolplugz-core</text>
+</svg>
