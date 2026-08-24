@@ -7,6 +7,7 @@ import { registerStartTaskTool, registerVerifyAndSubmitTool, registerCheckCommen
 import { registerPushBranchTool } from "./tools/pushBranch";
 import { registerGetDashboardTool } from "./tools/getDashboard";
 import { registerAddInsightTool } from "./tools/addInsight";
+import { registerMorningReportTool, registerLogRunTool } from "./tools/morningReport";
 
 const server = new McpServer({ name: "coolplugz", version: "1.0.0" });
 
@@ -20,6 +21,8 @@ registerCheckConflictsTool(server);
 registerPushBranchTool(server);
 registerGetDashboardTool(server);
 registerAddInsightTool(server);
+registerMorningReportTool(server);
+registerLogRunTool(server);
 
 const app = express();
 app.use(express.json());

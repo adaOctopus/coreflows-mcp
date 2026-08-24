@@ -121,6 +121,8 @@ CoolPlugz (verify_and_submit):
 | `get_task_state` | Shows ground truth state from the store + GitHub API |
 | `check_conflicts` | Detects merge conflicts and gives resolution steps |
 | `add_insight` | Adds a custom instruction included in all future prompts |
+| `morning_report` | Generates a formatted status report with completed tasks, PRs, CI results, and Slack draft messages |
+| `log_run` | Tracks run start/finish — powers morning_report with real data from each scheduled run |
 
 ## Custom Instructions
 
@@ -201,35 +203,52 @@ Paste this into Claude Code to set up a daily schedule that runs your tickets au
 ```
 Set up a scheduled task using /schedule that runs every weekday:
 
-- 6:00 AM: Morning run — call get_dashboard, then start_task on every QUEUED ticket. Follow the loop metadata for each: code → push_branch → verify_and_submit. If CI fails, fix and retry up to 3 times. Move to the next ticket when done or blocked.
+- 6:00 AM: Morning run
+  1. Call log_run with action "start" and trigger "morning" — save the run_id
+  2. Call get_dashboard to see all tasks
+  3. For every QUEUED ticket, call start_task with its Jira key
+  4. Follow the loop metadata for each: code → push_branch → verify_and_submit
+  5. If CI fails, fix and retry up to 3 times
+  6. When all tasks are processed, call log_run with action "finish", the run_id, and all task_results
+  7. Call morning_report with mode "latest" and slack_channels ["standup", "engineering"]
+  8. Show me the full report output
 
-- 12:00 PM: Midday check — call get_dashboard. For any task stuck in EXECUTING or CI_FAILED, retry it. For tasks with review comments, call check_comments, address them, push again.
+- 12:00 PM: Midday check
+  1. Call log_run with action "start" and trigger "midday"
+  2. Call get_dashboard — for any task stuck in EXECUTING or CI_FAILED, retry it
+  3. For tasks with review comments, call check_comments, address them, push again
+  4. Call log_run with action "finish" with results
+  5. Call morning_report with mode "latest"
 
-- 5:00 PM: End of day — call get_dashboard. Draft a Slack standup summary:
-  ✅ Done: completed tickets with PR links
-  🔄 In progress: still running
-  🚫 Blocked: failed with reason
+- 5:00 PM: End of day
+  1. Call log_run with action "start" and trigger "evening"
+  2. Call get_dashboard and process any remaining tasks
+  3. Call log_run with action "finish" with results
+  4. Call morning_report with mode "today" and slack_channels ["standup", "engineering", "product"]
+  5. Show me the full report — I want to see what got done today
 
 Rules for all runs:
-- Use the coolplugz MCP tools (get_dashboard, start_task, push_branch, verify_and_submit, check_comments)
+- Use the coolplugz MCP tools
 - Never ask for confirmation — just do it
 - Never push to main — always feature branches
 - Never commit secrets or .env files
 - If stuck after 3 retries, mark blocked and move on
 - Commit messages: feat(TICKET-KEY): description
+- Always call log_run start/finish so morning_report has real data
 ```
 
-### Slack standup updates
+### View the report anytime
 
-If you just want the standup without full scheduling, add this to the autopilot prompt above:
+You can also call the report manually in Claude Code:
 
 ```
-After finishing all tasks, draft a Slack standup message with:
-- ✅ Done: list completed tickets with PR links
-- 🔄 In progress: list any still running
-- 🚫 Blocked: list any that failed with the reason
-Format it for #standup channel. Keep it under 5 lines.
+Call morning_report with mode "today" and slack_channels ["standup", "engineering"]
 ```
+
+Modes:
+- `latest` — shows the most recent run's results (default)
+- `today` — shows all tasks updated today
+- `full` — shows everything in the store
 
 ## Environment Variables Reference
 

@@ -59,12 +59,34 @@ export interface PromptRecord {
   createdAt: string;
 }
 
+export interface RunRecord {
+  id: string;
+  trigger: string;
+  startedAt: string;
+  finishedAt: string | null;
+  taskResults: Array<{
+    jiraKey: string;
+    title: string;
+    status: string;
+    repo: string | null;
+    prUrl: string | null;
+    prNumber: number | null;
+    ciRetries: number;
+    error: string | null;
+  }>;
+  slackDrafts: Array<{
+    channel: string;
+    message: string;
+  }>;
+}
+
 interface StoreData {
   tasks: Task[];
   snapshots: ContextSnapshot[];
   mappings: RepoMapping[];
   insights: DeveloperInsight[];
   prompts: PromptRecord[];
+  runs: RunRecord[];
 }
 
 function ensureDir(): void {
@@ -76,12 +98,14 @@ function ensureDir(): void {
 function load(): StoreData {
   ensureDir();
   if (!fs.existsSync(DATA_FILE)) {
-    return { tasks: [], snapshots: [], mappings: [], insights: [], prompts: [] };
+    return { tasks: [], snapshots: [], mappings: [], insights: [], prompts: [], runs: [] };
   }
   try {
-    return JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
+    const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
+    if (!data.runs) data.runs = [];
+    return data;
   } catch {
-    return { tasks: [], snapshots: [], mappings: [], insights: [], prompts: [] };
+    return { tasks: [], snapshots: [], mappings: [], insights: [], prompts: [], runs: [] };
   }
 }
 
@@ -239,4 +263,52 @@ export function getLatestPrompt(taskId: string): PromptRecord | null {
   const data = load();
   const matching = data.prompts.filter((p) => p.taskId === taskId).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   return matching[0] || null;
+}
+
+// ── Run records ────────────────────────────────────────────────────────
+
+export function startRun(trigger: string): RunRecord {
+  const data = load();
+  const run: RunRecord = {
+    id: genId(),
+    trigger,
+    startedAt: new Date().toISOString(),
+    finishedAt: null,
+    taskResults: [],
+    slackDrafts: [],
+  };
+  data.runs.push(run);
+  save(data);
+  return run;
+}
+
+export function finishRun(runId: string, results: RunRecord["taskResults"], slackDrafts: RunRecord["slackDrafts"]): RunRecord | null {
+  const data = load();
+  const run = data.runs.find((r) => r.id === runId);
+  if (!run) return null;
+  run.finishedAt = new Date().toISOString();
+  run.taskResults = results;
+  run.slackDrafts = slackDrafts;
+  save(data);
+  return run;
+}
+
+export function getLatestRun(): RunRecord | null {
+  const data = load();
+  if (data.runs.length === 0) return null;
+  return data.runs.sort((a, b) => b.startedAt.localeCompare(a.startedAt))[0];
+}
+
+export function getRunsSince(since: string): RunRecord[] {
+  const data = load();
+  return data.runs
+    .filter((r) => r.startedAt >= since && r.finishedAt)
+    .sort((a, b) => b.startedAt.localeCompare(a.startedAt));
+}
+
+export function getRuns(limit: number = 10): RunRecord[] {
+  const data = load();
+  return data.runs
+    .sort((a, b) => b.startedAt.localeCompare(a.startedAt))
+    .slice(0, limit);
 }
