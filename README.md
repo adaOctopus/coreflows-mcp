@@ -4,6 +4,23 @@
   <img src="assets/banner.svg" alt="Core MCP" width="680"/>
 </p>
 
+### 🏆 Went Kind of Viral Product Hunt & Reddit
+
+<img width="1194" height="782" alt="image" src="https://github.com/user-attachments/assets/06c02087-406b-4a73-997b-03e2d79d9f2a" />
+
+
+<p align="center">
+  <a href="https://www.producthunt.com/@cryptosymposium">
+    <img src="https://img.shields.io/badge/Product%20Hunt-Top%205%20Product%20of%20the%20Day-DA552F?style=for-the-badge&logo=producthunt&logoColor=white" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=mapped&theme=dark&period=daily" width="200" />
+
+</p>
+
+
 MCP tools that turn Jira tickets into PRs through Claude Code. Fetches context from Jira, GitHub, Notion, and Slack, builds structured prompts, handles git push/PR/CI — all autonomously.
 
 ## Setup (5 minutes)
